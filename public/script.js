@@ -164,7 +164,7 @@ async function deleteStudent(id) {
 }
 
 function editStudent(student) {
-    editingId = student.id;
+    editingId = student.id; // This is now a string (MongoDB ObjectId), not a number
     nameInput.value = student.name;
     ageInput.value = student.age;
     courseInput.value = student.course;
@@ -201,7 +201,7 @@ function displayStudents(students) {
     tbody.querySelectorAll('.btn-edit').forEach(btn => {
         btn.addEventListener('click', () => {
             const student = {
-                id: parseInt(btn.dataset.studentId),
+                id: btn.dataset.studentId, // Keep as string - MongoDB ObjectId is a string, not a number!
                 name: btn.dataset.studentName,
                 age: parseInt(btn.dataset.studentAge),
                 course: btn.dataset.studentCourse
@@ -212,7 +212,7 @@ function displayStudents(students) {
     
     tbody.querySelectorAll('.btn-delete').forEach(btn => {
         btn.addEventListener('click', () => {
-            deleteStudent(parseInt(btn.dataset.studentId));
+            deleteStudent(btn.dataset.studentId); // Keep as string - MongoDB ObjectId is a string!
         });
     });
 }
