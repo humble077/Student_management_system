@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:3000/api/students';
+// Use relative URL so it works both locally and on Render
+// If running locally: http://localhost:3000/api/students
+// If on Render: https://your-app.onrender.com/api/students
+const API_BASE_URL = '/api/students';
 let editingId = null;
 
 // DOM Elements
