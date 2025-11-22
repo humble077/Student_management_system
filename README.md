@@ -139,28 +139,37 @@ curl http://localhost:3000/health
 
 ## Cloud Deployment
 
-### Option 1: Render
+### Option 1: Render (Recommended - Free Tier Available!)
 
-1. **Create MongoDB Atlas Database**:
+**📖 See detailed guide**: [RENDER_DEPLOYMENT_GUIDE.md](./RENDER_DEPLOYMENT_GUIDE.md)
+
+**Quick Steps:**
+
+1. **Setup MongoDB Atlas** (5 minutes):
    - Go to https://www.mongodb.com/cloud/atlas
-   - Create a free cluster
+   - Create free M0 cluster
+   - Create database user (save password!)
+   - Allow network access from anywhere (`0.0.0.0/0`)
    - Get connection string
-   - Whitelist Render IPs (0.0.0.0/0 for testing)
 
-2. **Deploy to Render**:
-   - Sign up at https://render.com
-   - Create a new Web Service
-   - Connect your GitHub repository
+2. **Deploy to Render** (10 minutes):
+   - Sign up at https://render.com (use GitHub login)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repo: `Student_management_system`
    - Configure:
      - **Build Command**: `npm install`
      - **Start Command**: `node server.js`
      - **Environment Variables**:
-       - `PORT`: 3000 (or use Render's PORT)
-       - `MONGODB_URI`: Your MongoDB Atlas connection string
-       - `NODE_ENV`: production
-   - Enable Auto-Deploy on push to main branch
+       - `MONGODB_URI`: Your Atlas connection string
+       - `NODE_ENV`: `production`
+   - Choose **Free** plan
+   - Click "Create Web Service"
 
-3. **Your app will be live at**: `https://your-app-name.onrender.com`
+3. **Wait 5-10 minutes** for deployment
+
+4. **Your app will be live at**: `https://your-app-name.onrender.com`
+
+**⚠️ Note**: Free tier sleeps after 15 min inactivity (wakes up on first request)
 
 ### Option 2: AWS EC2
 
